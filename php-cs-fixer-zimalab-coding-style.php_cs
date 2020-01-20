@@ -142,8 +142,6 @@ return PhpCsFixer\Config::create()
         'semicolon_after_instruction' => true,
         // Cast `(boolean)` and `(integer)` should be written as `(bool)` and `(int)`, `(double)` and `(real)` as `(float)`, `(binary)` as `(string)`.
         'short_scalar_cast' => true,
-        // A PHP file without end tag must always end with a single empty line feed.
-        'single_blank_line_at_eof' => true,
         // There should be exactly one blank line before a namespace declaration.
         'single_blank_line_before_namespace' => true,
         // There MUST NOT be more than one property or constant declared per statement.
