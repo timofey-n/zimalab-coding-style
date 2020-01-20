@@ -10,8 +10,6 @@ return PhpCsFixer\Config::create()
         'concat_space' => ['spacing'=>'one'],
         // PHP arrays should be declared using the configured syntax.
         'array_syntax' => ['syntax'=>'short'],
-        // Binary operators should be surrounded by space as configured.
-        'binary_operator_spaces' => true,
         // There MUST be one blank line after the namespace declaration.
         'blank_line_after_namespace' => true,
         // Ensure there is no code on the same line as the PHP open tag and it is followed by a blank line.
@@ -80,8 +78,6 @@ return PhpCsFixer\Config::create()
         'no_leading_namespace_whitespace' => true,
         // Either language construct `print` or `echo` should be used.
         'no_mixed_echo_print' => true,
-        // Operator `=>` should not be surrounded by multi-line whitespaces.
-        'no_multiline_whitespace_around_double_arrow' => true,
         // Single-line whitespace before closing semicolon are prohibited.
         'no_singleline_whitespace_before_semicolons' => true,
         // When making a method or function call, there MUST NOT be a space between the method or function name and the opening parenthesis.
@@ -132,8 +128,6 @@ return PhpCsFixer\Config::create()
         'phpdoc_separation' => true,
         // Single line `@var` PHPDoc should have proper spacing.
         'phpdoc_single_line_var_spacing' => true,
-        // Docblocks should only be used on structural elements.
-        'phpdoc_to_comment' => true,
         // PHPDoc should start and end with content, excluding the very first and last line of the docblocks.
         'phpdoc_trim' => true,
         // Removes extra blank lines after summary and after description in PHPDoc.
@@ -188,12 +182,17 @@ return PhpCsFixer\Config::create()
         'visibility_required' => true,
         // In array declaration, there MUST be a whitespace after each comma.
         'whitespace_after_comma_in_array' => true,
+        // Each element of an array must be indented exactly once.
+        'array_indentation' => true,
+        // Each line of multi-line DocComments must have an asterisk [PSR-5] and must be aligned with the first one.
+        'align_multiline_comment' => true,
+        // Operator `=>` should not be surrounded by multi-line whitespaces.
+        'no_multiline_whitespace_around_double_arrow' => true,
+        // Binary operators should be surrounded by space as configured.
+        'binary_operator_spaces' => ['operators'=>['=>'=>'align_single_space_minimal','='=>'align_single_space_minimal']],
     ])
     ->setFinder(PhpCsFixer\Finder::create()
-        ->exclude(['vendor', 'var', 'app', 'bin', 'public', 'config'])
-        ->notPath('tests/_*')
-        ->notPath('src/Kernel.php')
-        ->in(getcwd())
+        ->exclude('vendor')
+        ->in(__DIR__)
     )
 ;
-
