@@ -192,7 +192,10 @@ return PhpCsFixer\Config::create()
         'binary_operator_spaces' => ['operators'=>['=>'=>'align_single_space_minimal','='=>'align_single_space_minimal']],
     ])
     ->setFinder(PhpCsFixer\Finder::create()
-        ->exclude('vendor')
+        ->exclude(['vendor', 'var', 'app', 'bin', 'public', 'config'])
+        ->notPath('tests/_*')
+        ->notPath('src/Kernel.php')
+        ->in(getcwd())
         ->in(__DIR__)
     )
 ;
